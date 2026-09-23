@@ -28,7 +28,7 @@ namespace는 커널이 관리하는 자원의 이름이나 정보를 프로세�
 
 특정 프로세스가 속하는 namespace는 하나가 아닙니다. **UTS, PID, mount 등 종류별로 존재합니다.** UTS만 새로 나누면 hostname을 따로 바꿀 수 있지만 PID와 마운트 구성은 계속 공유합니다. 우리의 목표는 *필요한 종류를 조합해서 컨테이너의 실행 환경을 만드는 것*입니다.
 
-![process-namespace](3-ns.png)
+![process-namespace](images/3-ns.png)
 [출처: 컨테이너 생성 단계 분석 1편 - 리눅스 namespace](https://www.youtube.com/watch?v=EV4LyUJrw5E)
 
 위 그림의 프로세스와 namespace 사이 연결을 직접 확인해봅시다.
@@ -136,7 +136,7 @@ mount namespace는 파일의 복사본을 만드는 기능이 아닙니다(vs `c
 
 ## 실습
 
-[1주차의 「컨테이너도 리눅스 Process이다」 실습](./week-01.md#컨테이너도-리눅스-process이다)에서 호스트와 컨테이너의 프로세스 목록을 비교했습니다. 이번에는 namespace를 직접 나누며 그 차이가 생기는 이유를 알아봅시다.
+[1주차의 「컨테이너도 리눅스 Process이다」 실습](./week01.md#컨테이너도-리눅스-process이다)에서 호스트와 컨테이너의 프로세스 목록을 비교했습니다. 이번에는 namespace를 직접 나누며 그 차이가 생기는 이유를 알아봅시다.
 
 ### 1. UTS namespace: hostname만 따로 바꾸기
 
@@ -275,7 +275,7 @@ ls /
 
 아래 그림은 지난주와 이번주 만든 격리 환경을 비교한 그림입니다.
 
-![2주차는 호스트와 내부 프로세스가 같은 namespace를 사용하고, 3주차는 별도의 namespace를 사용하는 비교 그림](3-compare.png)
+![2주차는 호스트와 내부 프로세스가 같은 namespace를 사용하고, 3주차는 별도의 namespace를 사용하는 비교 그림](images/3-compare.png)
 
 2주차에서 파일 경로의 기준만 바꿨다면, 3주차에서는 hostname·PID 번호 공간·마운트 구성까지 분리했습니다.
 

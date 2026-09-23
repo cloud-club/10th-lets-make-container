@@ -113,7 +113,7 @@ sudo unshare --mount --uts /bin/sh
 
 전환 전에는 호스트 루트 아래의 `/home/ubuntu/tmproot`가 새 rootfs 후보로 놓여 있습니다.
 
-![pivot_root 전: 호스트 루트 아래 /home/ubuntu/tmproot](./pivot-root-before.png)
+![pivot_root 전: 호스트 루트 아래 /home/ubuntu/tmproot](images/pivot-root-before.png)
 
 **새 셸 안에서** 아래 명령을 한 줄씩 실행합니다. bind mount 뒤에는 `findmnt`로 `tmproot`가 mount point가 되었는지 확인합니다.
 
@@ -136,7 +136,7 @@ cd /
 
 전환 뒤에는 `tmproot`가 `/`가 되고, 이전 호스트의 루트는 `/put_old` 아래로 갑니다.
 
-![pivot_root 후: tmproot가 새 루트가 되고 이전 루트가 put_old 아래에 놓인 구조](./pivot-root-after.png)
+![pivot_root 후: tmproot가 새 루트가 되고 이전 루트가 put_old 아래에 놓인 구조](images/pivot-root-after.png)
 
 **같은 셸에서** 새 루트와 이전 루트의 상태를 확인합니다.
 

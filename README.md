@@ -6,13 +6,12 @@
 
 ## 로드맵
 
-
 | 주차 | 주제                           | 결과물                             |
 | ---- | ------------------------------ | ---------------------------------- |
 | 1    | Linux 프로세스 실행 모델       | 호스트와 컨테이너의 프로세스 비교  |
 | 2    | 이미지, rootfs, `chroot`       | rootfs와 `chroot` 관찰 기록        |
-| 3    | namespace, mount, `pivot_root` | 격리 셸 실행 결과                  |
-| 4    | cgroups v2                     | CPU·메모리 제한 기능               |
+| 3    | namespace, mount         | 격리 셸 실행 결과                  |
+| 4    | `pivot_root`, cgroups v2      | 격리 개선, CPU·메모리 제한 기능         |
 | 5    | 컨테이너 네트워크              | 외부 통신 가능한 network namespace |
 | 6    | 기능 통합과 cleanup            | `run-container.sh`                 |
 | 7    | 실행 경로 코드화               | `mydocker run`과 상태 디렉터리     |
