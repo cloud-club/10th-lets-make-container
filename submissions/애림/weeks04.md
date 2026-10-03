@@ -1,6 +1,6 @@
 ## 1. pivot_root 후 이전 루트를 put_old에서 분리하는 이유는 무엇일까?
 - 답: `pivot_root`를 하면 기존 root가 `/put_old`로 이동한다.  
-따라서 `/put_old`를 `umount`하여 기존 root를 제거하고 새로운 rootfs(새롭게 사용할 컨테이너의 /)만 사용하기 위해서이다.
+ -> `/put_old`를 `umount`하여 기존 root를 제거하고 새로운 rootfs(새롭게 사용할 컨테이너의 /)만 사용하기 위해서이다.
 <img width="721" height="788" alt="image" src="https://github.com/user-attachments/assets/e82bcf5b-cb1c-4e49-86f6-11389fd3a9c7" />
 -> chroot만 사용하면 강의에서 설명한대로 탈옥이 되었는데 이문제를 pivot root를 사용하면 해결이 된다! 정말로 root디렉토리가 바뀐거다
 <img width="1450" height="666" alt="image" src="https://github.com/user-attachments/assets/409adba4-4a7b-4bd0-a933-caec3c34ea3c" />
