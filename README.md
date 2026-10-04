@@ -13,6 +13,6 @@
 | 3    | namespace, mount         | 격리 셸 실행 결과                  |
 | 4    | `pivot_root`, cgroups v2      | 격리 개선, CPU·메모리 제한 기능         |
 | 5    | 컨테이너 네트워크              | 외부 통신 가능한 network namespace |
-| 6    | 기능 통합과 cleanup            | `run-container.sh`                 |
+| 6    | [이미지로부터 컨테이너 실행하기](docs/week06.md) | OverlayFS 적용과 `makecontainer.sh` 통합 |
 | 7    | 실행 경로 코드화               | `mydocker run`과 상태 디렉터리     |
 | 8    | 생명주기 CLI와 OCI 비교        | `exec`·`ps`·`stop`·`rm` 최종 데모  |
