@@ -61,14 +61,14 @@ sudo unshare --uts --pid --fork --mount bash -c "
 "
 ```
 
-![alt text](image.png)
+![alt text](images/image.png)
 
 
 
 ---
 <aside>
 
-![alt text](image-1.png)
+![alt text](images/image-1.png)
 
 bash가 pivot_root 이전에 캐싱된 명령어 경로를 사용하여 발생하는 오류
 
