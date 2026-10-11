@@ -19,9 +19,10 @@ cgroup : 프로세스 자원 관리
 
 ### rootfs·namespace·cgroup을 사람이 순서대로 설정하는 대신 runtime이 처리하려면 부모와 자식 프로세스가 각각 어떤 일을 맡아야 할까?
 부모 : rootfs경로 확인, cgroup(~자식이 일을 실행하기 전)이랑 자원제한 설정, 자식프로세스 상태관리
+
 자식 : 새로운 namespace에서 마운트 설정, pivot_root 실행, 이전 루트 분리후 필요한 /proc만 마운트
 
-
+```
 부모 프로세스
   ├─ rootfs 및 명령 확인
   ├─ cgroup 생성 및 자원 제한 설정
@@ -36,11 +37,12 @@ cgroup : 프로세스 자원 관리
   ├─ 이전 루트 분리
   ├─ procfs 마운트
   └─ 지정된 명령 실행
+```
   
 ### 3주차의 스크립트에서 pivot_root와 이전 루트 정리까지 수행하도록 추가하여 제출해주세요. 
 rootfs와 실행할 명령을 인자로 받으면 됩니다. 예: sudo ./makecontainer.sh /home/ubuntu/tmproot /bin/sh
 
-
+```
 #!/bin/bash
 
 if [ "$#" -lt 2 ]; then
@@ -93,3 +95,4 @@ unshare --mount --uts --pid --fork /bin/bash -c '
     exec "$@"
 ' makecontainer "$ROOTFS" "$@"
 
+```
