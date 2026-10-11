@@ -43,56 +43,26 @@ cgroup : 프로세스 자원 관리
 rootfs와 실행할 명령을 인자로 받으면 됩니다. 예: sudo ./makecontainer.sh /home/ubuntu/tmproot /bin/sh
 
 ```
+
 #!/bin/bash
+set -e
 
-if [ "$#" -lt 2 ]; then
-    echo "사용법: sudo $0 <rootfs 경로> <실행할 명령>"
-    exit 1
-fi
-
-if [ "$EUID" -ne 0 ]; then
-    echo "root 권한으로 실행해주세요."
-    exit 1
-fi
-
-ROOTFS=$(realpath "$1")
+ROOTFS="$1"
 shift
+CMD="${@:-/bin/sh}"
 
-if [ ! -x "$ROOTFS/bin/sh" ]; then
-    echo "오류: rootfs에 실행 가능한 /bin/sh가 없습니다."
-    exit 1
-fi
-
-unshare --mount --uts --pid --fork /bin/bash -c '
-    set -eu
-
-    ROOTFS=$1
-    shift
-
-    # mount 변경이 호스트로 전파되지 않도록 설정
-    mount --make-rprivate /
-
-    # pivot_root에 필요한 mount point 준비
-    mount --bind "$ROOTFS" "$ROOTFS"
-    mkdir -p "$ROOTFS/put_old" "$ROOTFS/proc"
-
-    # 새로운 rootfs로 이동
-    cd "$ROOTFS"
-    pivot_root . put_old
-    cd /
-
-    # 이전 호스트 루트 분리 및 디렉터리 정리
-    umount -l /put_old
-    rmdir /put_old
-
-    # 새 rootfs의 /proc에 procfs 연결
-    mount -t proc proc /proc
-
-    # UTS namespace의 hostname 설정
-    hostname week4
-
-    # 지정한 명령 실행
-    exec "$@"
-' makecontainer "$ROOTFS" "$@"
+sudo unshare --uts --pid --fork --mount --mount-proc bash -c '
+  mount --make-rprivate /
+  mount --bind "$1" "$1"
+  mkdir -p "$1/put_old"
+  cd "$1"
+  pivot_root . put_old
+  cd /
+  umount -l /put_old
+  rmdir /put_old
+  mount -t proc proc /proc
+  hostname week4
+  exec "${@:2}"
+' bash "$ROOTFS" $CMD
 
 ```
