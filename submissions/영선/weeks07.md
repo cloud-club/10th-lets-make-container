@@ -9,7 +9,8 @@
 
 ### 실행 명령어
 ```
-ubuntu@cluster05:~$ sudo ./makecontainer.sh python3 /weather.py
+sudo ./makecontainer.sh python3 -c 'print("test")'
+sudo ./makecontainer.sh python3 /weather.py
 ```
 
 ### makecontainer.sh
