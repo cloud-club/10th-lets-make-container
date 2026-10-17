@@ -65,7 +65,7 @@ sudo ./makecontainer.sh busybox:latest -- /bin/sh
 
 ## 막혔던 것
 
-<img src="img/08-no.webp" width="190" align="right">
+<img src="img/10-sad.webp" width="190" align="right">
 
 **`rm -rf` 가 `Device or resource busy`.** 호스트에서 overlay 를 mount 했더니 자식이 끝나도 mount 가 남았다. 자식의 mount namespace 안에서 mount 하도록 옮기니 해결.
 
@@ -105,7 +105,7 @@ namespace 를 나눠도 권한은 안 줄어든다. mount namespace 는 결과�
 
 ## 실습 사이트
 
-<img src="img/04-hello.webp" width="190" align="right">
+<img src="img/04-honey.webp" width="190" align="right">
 
 명령어를 직접 쳐야 넘어가고 맞히면 해설이 뜬다. 어려우면 조각 버튼으로 순서만 맞춰도 된다.
 
@@ -115,7 +115,7 @@ namespace 를 나눠도 권한은 안 줄어든다. mount namespace 는 결과�
 
 <br clear="right">
 
-<img src="img/05-ok.webp" width="140"> <img src="img/09-huh.webp" width="140"> <img src="img/10-sad.webp" width="140"> <img src="img/13-weekdone.webp" width="140">
+<img src="img/07-ok.webp" width="140"> <img src="img/09-huh.webp" width="140"> <img src="img/10-sad.webp" width="140"> <img src="img/13-weekdone.webp" width="140">
 
 맞히면 좋아하고 틀리면 시무룩해진다. 세 번 틀리면 더 시무룩해진다.
 
